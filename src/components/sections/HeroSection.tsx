@@ -1,9 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
+const heroImages = [
+  "/family.jpg",
+  "/family2.jpg",
+  "/family3.jpg"
+];
 
 export function HeroSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden pt-24 pb-12 px-4">
       {/* Ambient background blob */}
@@ -21,10 +36,31 @@ export function HeroSection() {
           transition={{ delay: 0.3, duration: 0.7 }}
           className="relative w-full max-w-4xl aspect-video rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/80 dark:ring-white/10"
         >
-          {/* The user's family picture */}
-          <img src="/family.jpg" alt="Chilakala Family Portrait" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-            <span className="text-white font-serif font-bold text-3xl tracking-wide">The Chilakala's Family</span>
+          {/* The automatic slider */}
+          <AnimatePresence mode="popLayout">
+            <motion.img 
+              key={currentIndex}
+              src={heroImages[currentIndex]} 
+              alt="Chilakala Family Portrait" 
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover" 
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8 z-10">
+            <span className="text-white font-serif font-bold text-3xl tracking-wide">The Chilakala Family</span>
+          </div>
+          
+          {/* Slider indicators */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {heroImages.map((_, idx) => (
+              <div 
+                key={idx} 
+                className={`h-2 rounded-full transition-all duration-500 ${idx === currentIndex ? "w-6 bg-white" : "w-2 bg-white/50"}`} 
+              />
+            ))}
           </div>
         </motion.div>
         
