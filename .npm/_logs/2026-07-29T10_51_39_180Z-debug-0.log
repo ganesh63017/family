@@ -1,0 +1,18 @@
+0 verbose cli /home/am-pc-27/.nvm/versions/node/v26.5.0/bin/node /home/am-pc-27/.nvm/versions/node/v26.5.0/bin/npm
+1 info using npm@11.17.0
+2 info using node@v26.5.0
+3 silly config load:file:/home/am-pc-27/.nvm/versions/node/v26.5.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/am-pc-27/Documents/Family/chilakala-hub/.npmrc
+5 silly config load:file:/home/am-pc-27/Documents/Family/.npmrc
+6 silly config load:file:/home/am-pc-27/.nvm/versions/node/v26.5.0/etc/npmrc
+7 verbose title npm exec next typegen
+8 verbose argv "exec" "next" "--" "typegen"
+9 verbose logfile logs-max:10 dir:/home/am-pc-27/Documents/Family/.npm/_logs/2026-07-29T10_51_39_180Z-
+10 verbose logfile /home/am-pc-27/Documents/Family/.npm/_logs/2026-07-29T10_51_39_180Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd /home/am-pc-27/Documents/Family/chilakala-hub
+13 verbose os Linux 7.0.0-27-generic
+14 verbose node v26.5.0
+15 verbose npm  v11.17.0
+16 verbose exit 0
+17 info ok
